@@ -1,0 +1,60 @@
+body {
+    background-color: rgba(38, 38, 38, 1);
+    max-width: 900px;
+}
+.App {
+    display: flex;
+   background:rgba(38, 38, 38, 1) ;
+   gap: 24px;
+  }
+  .App__mainInventory {
+      display: grid;
+      grid-template-columns: repeat(5, 105px);
+      position: relative;
+  }
+  .MainInventory__modal {
+    background: rgba(38, 38, 38, 1);
+    justify-content: center;
+    position: absolute;
+    left: 275px;
+    border: 1px solid rgba(77, 77, 77, 1);
+    text-align: center;
+  }
+  .skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+  
+  @keyframes skeleton-loading {
+    0% {
+      background-color: rgba(60, 60, 60, 1);
+    }
+    50% {
+        background-color: rgba(68, 68, 68, 1);
+      }
+    100% {
+      background-color: rgba(51, 51, 51, 1);
+    }
+  }
+  
+  .skeleton-text {
+    width: 100%;
+    height: 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+  
+  .skeleton-text__body {
+    width: 75%;
+  }
+  
+  .skeleton-footer {
+    width: 30%;
+  }
+  .card__header {
+    align-items: center;
+  }
+  .App__leftLayout {
+    border: 1px solid rgba(77, 77, 77, 1);
+    padding: 14px;
+    border-radius: 8px;
+  }
