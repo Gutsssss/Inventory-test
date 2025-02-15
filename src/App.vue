@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import img1 from './assets/img1.svg'
 import img2 from './assets/img2.svg'
 import img3 from './assets/img3.svg'
@@ -55,6 +55,10 @@ const startDrag = (event: any, item: InventoryItemType) => {
   event.dataTransfer.setData('itemID', item?.id);
 };
 
+const savedItems = localStorage.getItem('inventoryItem')
+if(savedItems) {
+  inventoryItems.value = JSON.parse(savedItems)
+}
 const onDrop = async (event: any, index: any) => {
   const itemID = event.dataTransfer.getData('itemID');
 
@@ -69,9 +73,11 @@ const deleteQuantity = (quantity:Number | any,itemIn:InventoryItemType) => {
     if(item.id === itemIn.id) {
       item.quantity = item.quantity - quantity
     }
-
   })
 }
+watch(inventoryItems.value,(newVal) => {
+  localStorage.setItem('inventoryItem',JSON.stringify(newVal))
+})
 </script>
 
 <style >

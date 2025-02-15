@@ -1,5 +1,5 @@
 <template>
-    <div class="inventoryItem" @click="$emit('open',item)">
+    <div class="inventoryItem" :class="{disabled:!item?.quantity}" @click="$emit('open',item)">
         <img :src="item?.img as string"/>
         <p :class="[(item?.quantity !== 0) ? 'inventoryItem__quantity' : 'inventoryItem__quantity__zero']">{{ item?.quantity }}</p>
     </div>
@@ -26,6 +26,10 @@ defineEmits(['open'])
     cursor: pointer;
     text-align: center;
     position: relative;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
 }
 .inventoryItem__quantity {
     position: absolute;
